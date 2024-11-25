@@ -56,8 +56,8 @@ namespace ComputerAPI.Controllers
         [HttpPut]
         public async Task<ActionResult<Osystem>> Put(Guid id, UpdateOsDto updateOsDto)
         {
-            var existingOs=await computerContext.Osystems.FirstOrDefaultAsync(os => os.Id == id);
-            if (existingOs != null) 
+            var existingOs = await computerContext.Osystems.FirstOrDefaultAsync(os => os.Id == id);
+            if (existingOs != null)
             {
                 existingOs.Name = updateOsDto.Name;
                 computerContext.Osystems.Update(existingOs);
@@ -65,6 +65,18 @@ namespace ComputerAPI.Controllers
                 return Ok(existingOs);
             }
             return NotFound(new { message = "Nincs ilyen találat." });
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var os = await computerContext.Osystems.FirstOrDefaultAsync(o => o.Id == id);
+            if (os != null)
+            {
+                computerContext.Osystems.Remove(os);
+                await computerContext.SaveChangesAsync();
+                return Ok(new {message ="sikeres törlés"});
+            }
+            return NotFound();
         }
     }
 }
