@@ -1,5 +1,4 @@
 ﻿using ComputerAPI.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +21,7 @@ namespace ComputerAPI.Controllers
             var os = new Osystem()
             {
                 Id = Guid.NewGuid(),
-                Name = createOsDto.Name
+                Name = createOsDto.Name,
 
             };
             if (os != null)
@@ -74,7 +73,7 @@ namespace ComputerAPI.Controllers
             {
                 computerContext.Osystems.Remove(os);
                 await computerContext.SaveChangesAsync();
-                return Ok(new {message ="sikeres törlés"});
+                return Ok(new { message = "sikeres törlés" });
             }
             return NotFound();
         }
