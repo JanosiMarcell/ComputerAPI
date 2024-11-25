@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "ComputerAPI.Controllers.OsystemController",
+    "Method": "Post",
+    "RelativePath": "osystem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createOsDto",
+        "Type": "ComputerAPI.Models.CreateOsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ComputerAPI.Models.Osystem",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
